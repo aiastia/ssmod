@@ -46,7 +46,7 @@ RUN wget -O 1.json --no-check-certificate $URL1  && \
     ls && \
     cp 1.json mudb.json && \
     ls && \
-    wget -O 2.json --no-check-certificate $URL2 && \
+    wget -O 2.py --no-check-certificate $URL2 && \
     ls && \
     cp 2.py userapiconfig.py 
 
