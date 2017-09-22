@@ -30,7 +30,8 @@ RUN apk --no-cache add python \
 
 RUN mkdir -p $WORK && \
     wget --no-check-certificate https://github.com/shadowsocksR-private/shadowsocksR/archive/$BRANCH.tar.gz && \
-    tar xzvf.tar.gz -C $WORK && \
+    ls && \
+    tar xzvf $BRANCH.tar.gz -C $WORK && \
     #cd /$WORK/shadowsocksR-$BRANCH && \
     chmod +x $WORK/shadowsocksR-$BRANCH/*.sh 
     #cp apiconfig.py userapiconfig.py && \
