@@ -20,8 +20,7 @@ ARG URL2=https://raw.githubusercontent.com/aiastia/mudbjsonss/master/userapiconf
 
 RUN apk --no-cache add python \
     libsodium \
-    wget \
-    pip
+    wget 
 
 
 RUN mkdir -p $WORK && \
