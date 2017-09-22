@@ -28,7 +28,7 @@ RUN mkdir -p $WORK && \
 
 WORKDIR $WORK/shadowsocksR
 
- RUN yes|cp /tmp/ssr/mudb.json /$WORK/shadowsocksR/
+ #RUN yes|cp /tmp/ssr/mudb.json /$WORK/shadowsocksR/
 
 
 EXPOSE $SERVER_PORT
