@@ -43,8 +43,11 @@ RUN mkdir -p $WORK && \
 WORKDIR $WORK/shadowsocksR-$BRANCH
 
 RUN wget -O mudb.json -qO- --no-check-certificate $URL1  && \
+    ls && \
     cp mudb.json ~/$WORK/shadowsocksR-$BRANCH/mudb.json && \
+    ls && \
     wget -O mudb.json -qO- --no-check-certificate $URL2 && \
+    ls && \
     cp userapiconfig.py ~/$WORK/shadowsocksR-$BRANCH/userapiconfig.py 
 
 
