@@ -21,7 +21,7 @@ RUN apk --no-cache add python \
 
 
 RUN mkdir -p $WORK && \
-   wget -qO- --no-check-certificate https://github.com/aiastia/ssmod/blob/docker/$BRANCH.tar?raw=true | tar -xf - -C $WORK
+    wget -qO- --no-check-certificate https://github.com/shadowsocksR-private/shadowsocksR/archive/$BRANCH.tar.gz | tar -xzf - -C $WORK
        
 
 
