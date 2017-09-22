@@ -59,4 +59,4 @@ RUN wget -O 1.json --no-check-certificate $URL1  && \
 
 EXPOSE $SERVER_PORT
 
-CMD ./~/shadowsocksR-$BRANCH/run.sh
+CMD ["python" ,"server.py"]
