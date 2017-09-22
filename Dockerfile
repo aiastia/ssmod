@@ -14,7 +14,7 @@ ENV DNS_ADDR_2      8.8.4.4
 
 
 ARG BRANCH=abcd
-ARG WORK=usr
+ARG WORK=~
 ARG URL1=https://raw.githubusercontent.com/aiastia/mudbjsonss/master/mudb.json
 ARG URL2=https://raw.githubusercontent.com/aiastia/mudbjsonss/master/userapiconfig.py
 
@@ -28,11 +28,11 @@ RUN apk --no-cache add python \
 
 RUN mkdir -p $WORK && \
     wget -qO- --no-check-certificate https://github.com/shadowsocksR-private/shadowsocksR/archive/$BRANCH.tar.gz | tar -xzf - -C $WORK && \
-    cd /$WORK/shadowsocksR-$BRANCH && \
-    chmod +x *.sh && \
-    cp apiconfig.py userapiconfig.py && \
-    cp config.json user-config.json && \
-    cp mysql.json usermysql.json
+    #cd /$WORK/shadowsocksR-$BRANCH && \
+    chmod +x *.sh 
+    #cp apiconfig.py userapiconfig.py && \
+    #cp config.json user-config.json && \
+    #cp mysql.json usermysql.json
 
 ENTRYPOINT ["./logrun.sh"]
 
