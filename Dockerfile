@@ -13,7 +13,9 @@ ENV DNS_ADDR_2      8.8.4.4
 
 ARG BRANCH=abcd
 ARG WORK=~
-ARG URL=https://raw.githubusercontent.com/aiastia/mudbjsonss/master/mudb.json
+ARG URL1=https://raw.githubusercontent.com/aiastia/mudbjsonss/master/mudb.json
+ARG URL2=https://raw.githubusercontent.com/aiastia/mudbjsonss/master/userapiconfig.py
+
 
 
 RUN apk --no-cache add python \
@@ -22,14 +24,17 @@ RUN apk --no-cache add python \
 
 
 RUN mkdir -p $WORK && \
-    wget -qO- --no-check-certificate https://github.com/shadowsocksR-private/shadowsocksR/archive/$BRANCH.tar.gz | tar -xzf - -C $WORK
+    wget -qO- --no-check-certificate https://github.com/shadowsocksR-private/shadowsocksR/archive/$BRANCH.tar.gz | tar -xzf - -C $WORK &&\
+    bash initcfg.sh
        
 
 
 
 WORKDIR $WORK/shadowsocksR-$BRANCH
 
-RUN wget -O mudb.json -qO- --no-check-certificate $URL
+RUN wget -O mudb.json -qO- --no-check-certificate $URL1
+RUN wget -O mudb.json -qO- --no-check-certificate $URL2
+
 
 
 
