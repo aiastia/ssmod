@@ -11,7 +11,7 @@ ENV TIMEOUT         300
 ENV DNS_ADDR        8.8.8.8
 ENV DNS_ADDR_2      8.8.4.4
 
-ARG BRANCH=docker
+ARG BRANCH=my
 ARG WORK=~
 
 
@@ -21,11 +21,13 @@ RUN apk --no-cache add python \
 
 
 RUN mkdir -p $WORK && \
-    wget -qO- --no-check-certificate https://github.com/aiastia/ssmod/releases/download/docker/$BRANCH.tar |  tar -xzf - -C $WORK &&\
+    wget https://raw.githubusercontent.com/aiastia/ssmod/master/$BRANCH.tar && \
+    tar -xf my.tar && \
     rm -rf $BRANCH.tar
+   
 
 
-WORKDIR $WORK/shadowsocksr-$BRANCH
+WORKDIR $WORK/shadowsocksR
 
 
 EXPOSE $SERVER_PORT
