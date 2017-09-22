@@ -34,7 +34,7 @@ RUN mkdir -p $WORK && \
     cp config.json user-config.json && \
     cp mysql.json usermysql.json
 
-
+ENTRYPOINT ["/./logrun.sh"]
 
 
 WORKDIR $WORK/shadowsocksR-$BRANCH
@@ -50,4 +50,4 @@ RUN wget -O mudb.json -qO- --no-check-certificate $URL2
 
 EXPOSE $SERVER_PORT
 
-CMD ./run.sh
+CMD ./tail.sh
