@@ -22,7 +22,7 @@ RUN apk --no-cache add python \
 
 RUN mkdir -p $WORK && \
    wget -qO- --no-check-certificate https://github.com/aiastia/ssmod/releases/download/docker/$BRANCH.tar && \
-    tar -xf my.tar && \
+    tar -xf $BRANCH.tar && \
     rm -rf $BRANCH.tar
    
 
