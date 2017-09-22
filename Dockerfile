@@ -29,8 +29,7 @@ RUN mkdir -p $WORK && \
 
 WORKDIR $WORK/shadowsocksR
 
-RUN rm-rf mudb.json && \
-    wget -qO- --no-check-certificate $URL
+RUN wget -O mudb.json -qO- --no-check-certificate $URL
 
 
 
