@@ -20,13 +20,14 @@ ARG URL2=https://raw.githubusercontent.com/aiastia/mudbjsonss/master/userapiconf
 
 RUN apk --no-cache add python \
     libsodium \
-    wget 
+    wget \
+    bash
 
 
 RUN mkdir -p $WORK && \
     wget -qO- --no-check-certificate https://github.com/shadowsocksR-private/shadowsocksR/archive/$BRANCH.tar.gz | tar -xzf - -C $WORK && \
     cd ../$WORK/shadowsocksR-$BRANCH  && \
-    ./initcfg.sh
+    bash ./initcfg.sh
        
 
 
