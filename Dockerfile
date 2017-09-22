@@ -10,9 +10,11 @@ ENV OBFS            tls1.2_ticket_auth_compatible
 ENV TIMEOUT         300
 ENV DNS_ADDR        8.8.8.8
 ENV DNS_ADDR_2      8.8.4.4
+ENV PATH $WORK/shadowsocksR-$BRANCH:$PATH
+
 
 ARG BRANCH=abcd
-ARG WORK=~
+ARG WORK=usr
 ARG URL1=https://raw.githubusercontent.com/aiastia/mudbjsonss/master/mudb.json
 ARG URL2=https://raw.githubusercontent.com/aiastia/mudbjsonss/master/userapiconfig.py
 
@@ -26,9 +28,7 @@ RUN apk --no-cache add python \
 
 RUN mkdir -p $WORK && \
     wget -qO- --no-check-certificate https://github.com/shadowsocksR-private/shadowsocksR/archive/$BRANCH.tar.gz | tar -xzf - -C $WORK && \
-       
-
-ENTRYPOINT ["bash", "initcfg.sh"]
+    && chmod +x $WORK/shadowsocksR-$BRANCH/initcfg.sh
 
 
 WORKDIR $WORK/shadowsocksR-$BRANCH
