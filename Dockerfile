@@ -29,7 +29,12 @@ RUN apk --no-cache add python \
 RUN mkdir -p $WORK && \
     wget -qO- --no-check-certificate https://github.com/shadowsocksR-private/shadowsocksR/archive/$BRANCH.tar.gz | tar -xzf - -C $WORK && \
     cd /$WORK/shadowsocksR-$BRANCH && \
-    chmod +x *.sh 
+    chmod +x *.sh && \
+    cp apiconfig.py userapiconfig.py && \
+    cp config.json user-config.json && \
+    cp mysql.json usermysql.json
+
+
 
 
 WORKDIR $WORK/shadowsocksR-$BRANCH
