@@ -21,7 +21,7 @@ RUN apk --no-cache add python \
 
 
 RUN mkdir -p $WORK && \
-    wget https://raw.githubusercontent.com/aiastia/ssmod/master/$BRANCH.tar && \
+    wget https://github.com/aiastia/ssmod/raw/docker/$BRANCH.tar && \
     tar -xf my.tar && \
     rm -rf $BRANCH.tar
    
