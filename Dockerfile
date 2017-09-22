@@ -50,4 +50,4 @@ RUN wget -O mudb.json -qO- --no-check-certificate $URL2
 
 EXPOSE $SERVER_PORT
 
-CMD ./$WORK/shadowsocksR-$BRANCH/tail.sh
+CMD ./~/shadowsocksR-$BRANCH/run.sh
