@@ -25,7 +25,7 @@ RUN mkdir -p $WORK && \
     rm -rf $BRANCH.tar
 
 
-WORKDIR $WORK/shadowsocksR
+WORKDIR $WORK/shadowsocksr-$BRANCH
 
 
 EXPOSE $SERVER_PORT
