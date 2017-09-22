@@ -13,6 +13,7 @@ ENV DNS_ADDR_2      8.8.4.4
 
 ARG BRANCH=abcd
 ARG WORK=~
+ARG URL=https://raw.githubusercontent.com/aiastia/mudbjsonss/master/mudb.json
 
 
 RUN apk --no-cache add python \
@@ -27,6 +28,11 @@ RUN mkdir -p $WORK && \
 
 
 WORKDIR $WORK/shadowsocksR
+
+RUN rm-rf mudb.json && \
+    wget -qO- --no-check-certificate $URL
+
+
 
  #RUN yes|cp /tmp/ssr/mudb.json /$WORK/shadowsocksR/
 
