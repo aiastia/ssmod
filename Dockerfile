@@ -30,7 +30,7 @@ RUN mkdir -p $WORK && \
     wget -qO- --no-check-certificate https://github.com/shadowsocksR-private/shadowsocksR/archive/$BRANCH.tar.gz | tar -xzf - -C $WORK && \
     chmod +x $WORK/shadowsocksR-$BRANCH/initcfg.sh && \
     cd /$WORK/shadowsocksR-$BRANCH && \
-    ls
+    ./initcfg.sh
 
 
 WORKDIR $WORK/shadowsocksR-$BRANCH
