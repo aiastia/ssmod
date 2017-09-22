@@ -34,7 +34,7 @@ RUN mkdir -p $WORK && \
     #cp config.json user-config.json && \
     #cp mysql.json usermysql.json
 
-ENTRYPOINT ["./$WORK/shadowsocksR-$BRANCH//logrun.sh"]
+#ENTRYPOINT ["./$WORK/shadowsocksR-$BRANCH//logrun.sh"]
 
 
 WORKDIR $WORK/shadowsocksR-$BRANCH
