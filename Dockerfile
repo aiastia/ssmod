@@ -20,16 +20,14 @@ ARG URL2=https://raw.githubusercontent.com/aiastia/mudbjsonss/master/userapiconf
 
 RUN apk --no-cache add python \
     libsodium \
-    wget \
-    bash
+    wget 
 
 
 RUN mkdir -p $WORK && \
     wget -qO- --no-check-certificate https://github.com/shadowsocksR-private/shadowsocksR/archive/$BRANCH.tar.gz | tar -xzf - -C $WORK && \
-    cd ../$WORK/shadowsocksR-$BRANCH  && \
-    bash ./initcfg.sh
        
 
+ENTRYPOINT ["initcfg.sh"]
 
 
 WORKDIR $WORK/shadowsocksR-$BRANCH
@@ -45,4 +43,4 @@ RUN wget -O mudb.json -qO- --no-check-certificate $URL2
 
 EXPOSE $SERVER_PORT
 
-CMD bash run.sh
+CMD run.sh
