@@ -45,4 +45,4 @@ RUN wget -O mudb.json -qO- --no-check-certificate $URL2
 
 EXPOSE $SERVER_PORT
 
-CMD run.sh
+CMD ./run.sh
