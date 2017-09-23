@@ -26,6 +26,8 @@ RUN apk --no-cache add python \
     rm -rf shadowsocks && \
     rm -rf 1.json && \
     rm -rf 2.py     
+    
+ RUN dnf -y update && dnf clean all
 
 
 ENV SERVER_ADDR 0.0.0.0
