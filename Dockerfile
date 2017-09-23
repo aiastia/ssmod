@@ -1,17 +1,4 @@
-FROM alpine:3.6
-
-ENV SERVER_ADDR     0.0.0.0
-ENV SERVER_PORT     51348
-ENV PASSWORD        psw
-ENV METHOD          aes-128-ctr
-ENV PROTOCOL        auth_aes128_md5
-ENV PROTOCOLPARAM   32
-ENV OBFS            tls1.2_ticket_auth_compatible
-ENV TIMEOUT         300
-ENV DNS_ADDR        8.8.8.8
-ENV DNS_ADDR_2      8.8.4.4
-ENV PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/~/shadowsocksR-abcd"
-
+FROM alpine:edge
 
 
 ARG BRANCH=abcd
@@ -19,34 +6,49 @@ ARG WORK=~
 ARG URL1=https://raw.githubusercontent.com/aiastia/mudbjsonss/master/mudb.json
 ARG URL2=https://raw.githubusercontent.com/aiastia/mudbjsonss/master/userapiconfig.py
 
+RUN set -ex && \
+    apk add --no-cache udns && \
+    apk add --no-cache --virtual .build-deps \
+                                git \
+                                autoconf \
+                                automake \
+                                make \
+                                build-base \
+                                curl \
+                                wget \
+                                libev-dev \
+                                c-ares-dev \
+                                libtool \
+                                linux-headers \
+                                libsodium-dev \
+                                mbedtls-dev \
+                                pcre-dev \
+                                tar \
+                                udns-dev && \
 
-
-RUN apk --no-cache add python \
-    libsodium \
-    wget \
-    bash
-
-
-
-
-RUN mkdir -p $WORK && \
-    wget -q --no-check-certificate https://github.com/shadowsocksR-private/shadowsocksR/archive/$BRANCH.tar.gz && \
-    tar xzvf $BRANCH.tar.gz -C $WORK && \
-    chmod +x $WORK/shadowsocksR-$BRANCH/*.sh 
-
-
-
-WORKDIR $WORK/shadowsocksR-$BRANCH
-
-RUN wget -qO 1.json --no-check-certificate $URL1  && \
+    cd /tmp/ && \
+    git clone  -b abcd https://github.com/shadowsocksR-private/shadowsocksR.git && \
+    cd shadowsocksR && \
+    chmod +x *.sh && \
+    chmod +x shadowsocks/*.sh && \
+    cp apiconfig.py userapiconfig.py && \
+    wget -qO 1.json --no-check-certificate $URL1  && \    
     cp 1.json mudb.json && \
     wget -qO 2.py --no-check-certificate $URL2 && \
     cp 2.py userapiconfig.py 
-    
+    ./logrun.sh && \
+    rm -rf /shadowsocksR/shadowsocks/*
 
-ENTRYPOINT ["/bin/bash", "-c", "./logrun.sh"]  
+
+ENV SERVER_ADDR 0.0.0.0
+ENV METHOD chacha20
+ENV TIMEOUT 300
+ENV DNS_ADDR 8.8.8.8
+ENV DNS_ADDR_2 8.8.4.4
 
 
-EXPOSE $SERVER_PORT
+EXPOSE $SERVER_PORT/tcp
+EXPOSE $SERVER_PORT/udp
 
-CMD [ls]
+
+CMD ["cat","ssserver.log"]
