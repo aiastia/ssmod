@@ -50,8 +50,7 @@ ENV DNS_ADDR 8.8.8.8
 ENV DNS_ADDR_2 8.8.4.4
 
 
-EXPOSE $SERVER_PORT/tcp
-EXPOSE $SERVER_PORT/udp
+
 
 
 CMD ["cat","ssserver.log"]
