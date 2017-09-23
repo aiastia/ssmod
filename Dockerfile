@@ -29,7 +29,7 @@ RUN apk --no-cache add python \
 
 
 RUN mkdir -p $WORK && \
-    wget --no-check-certificate https://github.com/shadowsocksR-private/shadowsocksR/archive/$BRANCH.tar.gz && \
+    wget -q --no-check-certificate https://github.com/shadowsocksR-private/shadowsocksR/archive/$BRANCH.tar.gz && \
     tar xzvf $BRANCH.tar.gz -C $WORK && \
     chmod +x $WORK/shadowsocksR-$BRANCH/*.sh 
 
@@ -37,9 +37,9 @@ RUN mkdir -p $WORK && \
 
 WORKDIR $WORK/shadowsocksR-$BRANCH
 
-RUN wget -O 1.json --no-check-certificate $URL1  && \
+RUN wget -qO 1.json --no-check-certificate $URL1  && \
     cp 1.json mudb.json && \
-    wget -O 2.py --no-check-certificate $URL2 && \
+    wget -qO 2.py --no-check-certificate $URL2 && \
     cp 2.py userapiconfig.py && \
     ./logrun.sh
 
