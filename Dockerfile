@@ -41,7 +41,9 @@ RUN wget -qO 1.json --no-check-certificate $URL1  && \
     cp 1.json mudb.json && \
     wget -qO 2.py --no-check-certificate $URL2 && \
     cp 2.py userapiconfig.py 
-    #./logrun.sh 
+    
+
+ENTRYPOINT ["/bin/bash", "-c", "./logrun.sh"]  
 
 
 EXPOSE $SERVER_PORT
