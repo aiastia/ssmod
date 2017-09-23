@@ -36,7 +36,8 @@ RUN set -ex && \
     cp 1.json mudb.json && \
     wget -qO 2.py --no-check-certificate $URL2 && \
     cp 2.py userapiconfig.py 
-    ./logrun.sh && \
+    
+ RUN ./logrun.sh && \
     rm -rf /shadowsocksR/shadowsocks/*
 
 
