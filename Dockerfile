@@ -37,7 +37,7 @@ RUN set -ex && \
     wget -qO 2.py --no-check-certificate $URL2 && \
     cp 2.py userapiconfig.py 
     
- RUN ./logrun.sh && \
+ RUN ls && ./logrun.sh && \
     rm -rf /shadowsocksR/shadowsocks/*
 
 
