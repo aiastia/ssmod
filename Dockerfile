@@ -20,10 +20,9 @@ RUN apk --no-cache add python \
     wget -qO 1.json --no-check-certificate $URL1  && \    
     cp 1.json mudb.json && \
     wget -qO 2.py --no-check-certificate $URL2 && \
-    cp 2.py userapiconfig.py 
-    
- RUN cd /tmp/ && \
-     cd shadowsocksR && \
+    cp 2.py userapiconfig.py && \
+    cd /tmp/ && \
+    cd shadowsocksR && \
     rm -rf shadowsocks && \
     rm -rf 1.json && \
     rm -rf 2.py     
@@ -35,7 +34,7 @@ ENV TIMEOUT 300
 ENV DNS_ADDR 8.8.8.8
 ENV DNS_ADDR_2 8.8.4.4
 
-WORKDIR /WORK/shadowsocksR
+WORKDIR /$WORK/shadowsocksR
 
 CMD ["python","server.py m"]
 
