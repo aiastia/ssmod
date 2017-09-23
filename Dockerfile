@@ -39,8 +39,7 @@ RUN set -ex && \
     
  RUN cd /tmp/ && \
      cd shadowsocksR && \
-     ./logrun.sh && \
-    rm -rf /shadowsocks
+    rm -rf shadowsocks
 
 
 ENV SERVER_ADDR 0.0.0.0
@@ -50,6 +49,9 @@ ENV DNS_ADDR 8.8.8.8
 ENV DNS_ADDR_2 8.8.4.4
 
 WORKDIR /tmp/shadowsocksR
+
+ENTRYPOINT ["/logrun.sh"]
+
 
 
 
