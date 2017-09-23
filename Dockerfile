@@ -37,7 +37,7 @@ ENV DNS_ADDR_2 8.8.4.4
 
 WORKDIR /WORK/shadowsocksR
 
-CMD ["python server.py m"]
+CMD ["python","server.py m"]
 
 
 
