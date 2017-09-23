@@ -50,7 +50,7 @@ ENV DNS_ADDR_2 8.8.4.4
 
 WORKDIR /tmp/shadowsocksR
 
-ENTRYPOINT ["bash","./tmp/shadowsocksR/logrun.sh &"]
+ENTRYPOINT ["python server.py m>> ssserver.log"]
 
 
 
