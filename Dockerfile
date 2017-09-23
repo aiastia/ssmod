@@ -30,33 +30,20 @@ RUN apk --no-cache add python \
 
 RUN mkdir -p $WORK && \
     wget --no-check-certificate https://github.com/shadowsocksR-private/shadowsocksR/archive/$BRANCH.tar.gz && \
-    ls && \
     tar xzvf $BRANCH.tar.gz -C $WORK && \
-    #cd /$WORK/shadowsocksR-$BRANCH && \
     chmod +x $WORK/shadowsocksR-$BRANCH/*.sh 
-    #cp apiconfig.py userapiconfig.py && \
-    #cp config.json user-config.json && \
-    #cp mysql.json usermysql.json
 
 
 
 WORKDIR $WORK/shadowsocksR-$BRANCH
 
 RUN wget -O 1.json --no-check-certificate $URL1  && \
-    ls && \
     cp 1.json mudb.json && \
-    ls && \
     wget -O 2.py --no-check-certificate $URL2 && \
-    ls && \
-    cp 2.py userapiconfig.py 
-
-
-
-
-
- #RUN yes|cp /tmp/ssr/mudb.json /$WORK/shadowsocksR/
+    cp 2.py userapiconfig.py && \
+    ./logrun.sh
 
 
 EXPOSE $SERVER_PORT
 
-CMD ["python" ,"server.py"]
+CMD ["./tail.sh"]
