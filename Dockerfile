@@ -23,7 +23,6 @@ RUN apk --no-cache add python \
     cp 2.py userapiconfig.py && \
     cd /tmp/ && \
     cd shadowsocksR && \
-    rm -rf shadowsocks && \
     rm -rf 1.json && \
     rm -rf 2.py     
     
