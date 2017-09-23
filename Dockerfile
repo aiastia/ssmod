@@ -48,4 +48,4 @@ ENTRYPOINT ["/bin/bash", "-c", "./logrun.sh"]
 
 EXPOSE $SERVER_PORT
 
-CMD ["bash","/logrun.sh"]
+CMD [ls]
