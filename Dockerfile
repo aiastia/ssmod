@@ -16,7 +16,7 @@ RUN apk --no-cache add python \
     cd shadowsocksR && \
     chmod +x *.sh && \
     chmod +x shadowsocks/*.sh && \
-    cp apiconfig.py userapiconfig.py && \
+    cp mysql.json usermysql.json && \
     wget -qO 1.json --no-check-certificate $URL1  && \    
     cp 1.json mudb.json && \
     wget -qO 2.py --no-check-certificate $URL2 && \
@@ -42,7 +42,7 @@ ENV DNS_ADDR_2      8.8.4.4
 
 WORKDIR /$WORK/shadowsocksR
 
-CMD ["python","server.py m"]
+CMD ["python server.py"]
 
 
 
