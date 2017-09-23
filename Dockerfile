@@ -2,29 +2,14 @@ FROM alpine:edge
 
 
 ARG BRANCH=abcd
-ARG WORK=~
+ARG WORK=tmp
 ARG URL1=https://raw.githubusercontent.com/aiastia/mudbjsonss/master/mudb.json
 ARG URL2=https://raw.githubusercontent.com/aiastia/mudbjsonss/master/userapiconfig.py
 
-RUN set -ex && \
-    apk add --no-cache udns && \
-    apk add --no-cache --virtual .build-deps \
-                                git \
-                                autoconf \
-                                automake \
-                                make \
-                                build-base \
-                                curl \
-                                wget \
-                                libev-dev \
-                                c-ares-dev \
-                                libtool \
-                                linux-headers \
-                                libsodium-dev \
-                                mbedtls-dev \
-                                pcre-dev \
-                                tar \
-                                udns-dev && \
+RUN apk --no-cache add python \
+    libsodium \
+    git \
+    wget && \
 
     cd /tmp/ && \
     git clone  -b abcd https://github.com/shadowsocksR-private/shadowsocksR.git && \
@@ -39,7 +24,9 @@ RUN set -ex && \
     
  RUN cd /tmp/ && \
      cd shadowsocksR && \
-    rm -rf shadowsocks
+    rm -rf shadowsocks && \
+    rm -rf 1.json && \
+    rm -rf 2.py     
 
 
 ENV SERVER_ADDR 0.0.0.0
@@ -48,7 +35,7 @@ ENV TIMEOUT 300
 ENV DNS_ADDR 8.8.8.8
 ENV DNS_ADDR_2 8.8.4.4
 
-WORKDIR /tmp/shadowsocksR
+WORKDIR /WORK/shadowsocksR
 
 CMD ["python server.py m"]
 
