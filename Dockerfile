@@ -37,8 +37,10 @@ RUN set -ex && \
     wget -qO 2.py --no-check-certificate $URL2 && \
     cp 2.py userapiconfig.py 
     
- RUN ls && ./logrun.sh && \
-    rm -rf /shadowsocksR/shadowsocks/*
+ RUN cd /tmp/ && \
+     cd shadowsocksR && \
+     ./logrun.sh && \
+    rm -rf /shadowsocks
 
 
 ENV SERVER_ADDR 0.0.0.0
